@@ -1,0 +1,21 @@
+#Feign로그는 debug보다 높은 레벨에서는 나오지 않는다.
+logging:
+  level:
+    root: DEBUG
+    com.example: debug
+
+server:
+  port: 8001
+
+spring:
+  devtools:
+    livereload:
+      enabled: false
+      port: 35730
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
+
