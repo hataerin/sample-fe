@@ -1,0 +1,4 @@
+# kind 클러스터에서 적용되는 profile 설정
+
+backend:
+  url: http://temp/boards

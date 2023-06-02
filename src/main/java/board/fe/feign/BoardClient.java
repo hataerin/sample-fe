@@ -2,11 +2,13 @@ package board.fe.feign;
 
 import board.fe.model.Board;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "boardClient", url = "http://localhost:8000/boards")
+@PropertySource("classpath:application.yml")
+@FeignClient(name = "boardClient", url = "${backend.url}") //profile에 작성한 주소 변수 입력
 public interface BoardClient {
 
     //게시글 전체 조회

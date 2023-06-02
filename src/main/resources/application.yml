@@ -18,4 +18,25 @@ spring:
     cache: false
   mvc:
     static-path-pattern: /static/**
+  profiles:
+    active: @spring.profiles.active@
+    # active: @spring.profiles.active@
 
+---
+
+spring:
+  config:
+    activate:
+      on-profile: default # pom.xml에 적은 이름과 매핑
+  profile:
+    include:
+      - default # yml실제 파일명과 매핑 (application-default.yml) 파일명은 camelCase 추천 구분자는 비추천
+
+---
+spring:
+  config:
+    activate:
+      on-profile: kind
+  profile:
+    include:
+      - kind
