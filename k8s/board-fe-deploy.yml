@@ -18,10 +18,10 @@ spec:
     spec:
       containers:
         - name: board-fe
-          image: hotoron/demo-fe:2-kind
+          image: docker.io/hotoron/demo-fe:v2
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9000
+            - containerPort: 80
           resources:
             requests:
               cpu: 500m

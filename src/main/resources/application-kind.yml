@@ -1,2 +1,4 @@
+server:
+  port: 80
 backend:
   url: http://board-api-headless-svc.board-api.svc.cluster.local:8000/boards

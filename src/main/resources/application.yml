@@ -1,11 +1,8 @@
 #Feign로그는 debug보다 높은 레벨에서는 나오지 않는다.
 logging:
   level:
-    root: DEBUG
-    com.example: debug
-
-server:
-  port: 8001
+    root: info
+    com.example: info
 
 spring:
   devtools:
@@ -19,23 +16,6 @@ spring:
   mvc:
     static-path-pattern: /static/**
   profiles:
-    active: @spring.profiles.active@
+    active: default
 
 ---
-
-spring:
-  config:
-    activate:
-      on-profile: default # pom.xml에 적은 이름과 매핑
-  profile:
-    include:
-      - default # yml실제 파일명과 매핑 (application-default.yml) 파일명은 camelCase 추천 구분자는 비추천
-
----
-spring:
-  config:
-    activate:
-      on-profile: kind
-  profile:
-    include:
-      - kind
