@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-fe-deployment                 # Deployment name
+  namespace: board-fe                       # Namespace mapping
+  labels:
+    app: board-fe                           # Deployment label
+spec:
+  replicas: 3                               # Amount of replicaset
+  selector:
+    matchLabels:
+      app: board-fe
+  template:
+    metadata:
+      labels:
+        app: board-fe
+    spec:
+      containers:
+        - name: board-fe
+          image: hotoron/demo-fe:2-kind
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          resources:
+            requests:
+              cpu: 500m
+              memory: 500M
+            limits:
+              cpu: 1
+              memory: 1Gi
+          # Deployment TimeZone Setting
+          volumeMounts:
+            - name: tz-seoul
+              mountPath: /etc/localtime
+      volumes:
+        - name: tz-seoul
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Seoul
