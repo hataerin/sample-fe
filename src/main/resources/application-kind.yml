@@ -1,4 +1,2 @@
-# kind 클러스터에서 적용되는 profile 설정
-
 backend:
-  url: http://temp/boards
+  url: http://board-api-headless-svc.board-api.svc.cluster.local:8000/boards

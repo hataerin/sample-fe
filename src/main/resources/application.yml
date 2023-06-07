@@ -20,7 +20,6 @@ spring:
     static-path-pattern: /static/**
   profiles:
     active: @spring.profiles.active@
-    # active: @spring.profiles.active@
 
 ---
 

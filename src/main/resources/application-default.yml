@@ -1,4 +1,2 @@
-# 기본 환경(로컬)에서 적용되는 profile 설정
-
 backend:
   url: http://localhost:8000/boards
