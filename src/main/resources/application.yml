@@ -2,11 +2,11 @@
 logging:
   level:
     root: info
-    com.example: info
+    com.example: info # 공통내용만 작성하기
 
 spring:
   devtools:
-    livereload:
+    livereload: # 빼고 돌려보기
       enabled: false
       port: 35730
   thymeleaf:
