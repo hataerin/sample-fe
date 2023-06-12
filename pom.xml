@@ -17,31 +17,6 @@
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
     </properties>
-    <profiles>
-        <profile>
-<!--            application-default , 프로파일 이름-->
-            <id>default</id>
-            <activation>
-                <activeByDefault>
-                    true
-                </activeByDefault>
-            </activation>
-            <properties>
-                <spring.profiles.active>
-                    default
-                </spring.profiles.active>
-            </properties>
-        </profile>
-        <profile>
-            <!--application-kind , 프로파일 이름-->
-            <id>kind</id>
-            <properties>
-                <spring.profiles.active>
-                    kind
-                </spring.profiles.active>
-            </properties>
-        </profile>
-    </profiles>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

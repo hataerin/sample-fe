@@ -4,6 +4,7 @@ metadata:
   name: demo-fe-ingress
   namespace: board-fe
   annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
