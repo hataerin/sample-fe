@@ -11,6 +11,6 @@ spec:
   clusterIP: None
   ports:
     - name: rest
-      port: 80      # Inner container port
+      port: 9000      # Inner container port
       targetPort: 80  # Service forward port
       protocol: TCP     # Protocol configuration
