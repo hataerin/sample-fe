@@ -14,9 +14,10 @@ profiles:
               - "-Djib.container.environment=SPRING_PROFILES_ACTIVE=k3d"  # jib 플러그인을 통해 dev profile에 대해 수행
             fromImage: docker.io/library/eclipse-temurin:17-jre-alpine         # 실행을 위한 runtime image
     deploy:
-      kubectl:
-        manifests:
-          # Apply Ingress Controller to cluster
-          - https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
-          - k8s/k3d/*.yml
+      kustomize:
+        paths:
+          - /k8s/base
+#      kubectl:
+#        manifests:
+#          - k8s/k3d/*.yml
 
