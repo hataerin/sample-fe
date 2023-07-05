@@ -17,6 +17,6 @@ profiles:
       kubectl:
         manifests:
           # Apply Ingress Controller to cluster
-          - https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+#          - https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml # [nginx]ingress ctrl 만드는 yml
           - k8s/k3d/*.yml
 
