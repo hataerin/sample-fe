@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 #Feign로그는 debug보다 높은 레벨에서는 나오지 않는다.
 logging:
   level:
@@ -5,10 +8,6 @@ logging:
     com.example: info # 공통내용만 작성하기
 
 spring:
-  devtools:
-    livereload: # 빼고 돌려보기
-      enabled: false
-      port: 35730
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html

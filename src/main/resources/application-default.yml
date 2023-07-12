@@ -2,4 +2,4 @@ backend:
   url: http://localhost:8080/boards
 
 server:
-  port: 8001
+  port: 8081
