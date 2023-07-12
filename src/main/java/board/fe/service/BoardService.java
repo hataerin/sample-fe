@@ -3,6 +3,7 @@ package board.fe.service;
 import board.fe.common.config.WebClientConfig;
 import board.fe.model.Board;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -11,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class BoardService {
 
     private final WebClientConfig webClient;
@@ -39,6 +41,7 @@ public class BoardService {
 
     //게시글 등록
     public Mono<Void> createBoard(Mono<Board> boardMono){
+
         return this.webClient.getWebClient()
                 .post()
                 .uri("/boards")

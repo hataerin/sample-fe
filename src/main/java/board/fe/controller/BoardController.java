@@ -26,12 +26,9 @@ public class BoardController {
 
     @GetMapping("/list")
     public Mono<String> list(PagerInfo pagerInfo, Model model) {
-        Flux<Board> boardFlux = this.boardService.findAll();
+        Flux<Board> boardFlux = this.boardService.findAll();;
 
-        List<Board> boardList = boardFlux.collectList().block();
-        log.warn(boardList.get(0).getTitle());
-
-        model.addAttribute("boardList", boardList);
+        model.addAttribute("boardList", boardFlux);
         model.addAttribute("pagerInfo", pagerInfo);
 
         return Mono.just("board/list");
@@ -41,11 +38,7 @@ public class BoardController {
     public Mono<String> view(
             @RequestParam Integer num, Model model
     ){
-        Mono<Board> board = this.boardService.findById(6);
-
-//        board.flatMap(data -> Mono.fromRunnable(() -> {
-//            log.warn(data.getNum().toString());
-//        })).subscribe();
+        Mono<Board> board = this.boardService.findById(num);
 
         model.addAttribute("board",board);
 
@@ -66,7 +59,7 @@ public class BoardController {
         return Mono.just("board/form");
     }
 
-    @PostMapping(value = "/writeSubmit",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = "/write/submit",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public Mono<String> writeSubmit(Mono<Board> board,PagerInfo pagerInfo, Model model) {
         this.boardService.createBoard(board).subscribe(); // * Execute subscribe for run save method first.
 
@@ -79,7 +72,7 @@ public class BoardController {
         return Mono.just("redirect:/boards/list");
     }
 
-    @PostMapping(value = "/modifySubmit", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = "/modify/submit", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public Mono<String> modifySubmit(Mono<Board> boardMono, PagerInfo pagerInfo, Model model) {
         boardMono.flatMap(board -> Mono.fromRunnable(() -> {
             log.debug("Received Board Id : {}",board.getNum());
@@ -101,7 +94,6 @@ public class BoardController {
 
     @GetMapping("/delete")
     public Mono<String> delete(@RequestParam Integer num,PagerInfo pagerInfo,Model model){
-        log.warn(num+"");
 
         this.boardService.deleteById(num).subscribe();
 
@@ -112,12 +104,6 @@ public class BoardController {
 
         // Redirect url
         return Mono.just("redirect:/boards/list");
-    }
-
-    @GetMapping("/home")
-    public String test(PagerInfo pagerInfo,Model model){
-
-        return "board/layout/basic";
     }
 
 }
