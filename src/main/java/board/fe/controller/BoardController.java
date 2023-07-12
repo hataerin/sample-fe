@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequestMapping("/boards")
@@ -24,17 +26,26 @@ public class BoardController {
 
     @GetMapping("/list")
     public Mono<String> list(PagerInfo pagerInfo, Model model) {
-//        Flux<Board> boardFlux = this.boardService.findAll();
-//
-//        model.addAttribute("boardList", boardFlux);
-//        model.addAttribute("pagerInfo", pagerInfo);
+        Flux<Board> boardFlux = this.boardService.findAll();
+
+        List<Board> boardList = boardFlux.collectList().block();
+        log.warn(boardList.get(0).getTitle());
+
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("pagerInfo", pagerInfo);
 
         return Mono.just("board/list");
     }
 
     @GetMapping("/view")
-    public Mono<String> view(@RequestParam Integer num, Model model){
-        Mono<Board> board = this.boardService.findById(num);
+    public Mono<String> view(
+            @RequestParam Integer num, Model model
+    ){
+        Mono<Board> board = this.boardService.findById(6);
+
+//        board.flatMap(data -> Mono.fromRunnable(() -> {
+//            log.warn(data.getNum().toString());
+//        })).subscribe();
 
         model.addAttribute("board",board);
 

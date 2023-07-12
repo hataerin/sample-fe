@@ -22,12 +22,14 @@
             <tr th:if="${not #lists.isEmpty( boardList )}" th:each="board : ${boardList}">
                 <td scope="row" th:text=" ${board.num}"></td>
                 <td class="text-left">
-<!--                    <a th:href="@{view(num=${board.num})}" th:text="${board.title}"></a>-->
-                    <a th:href="@{/boards/{num}(num = ${board.num})}" th:text="${board.title}"></a>
+                    <a th:href="@{view(num=${board.num})}" th:text="${board.title}"></a>
+<!--                    <a th:href="@{/boards/{num}(num = ${board.num})}" th:text="${board.title}"></a>-->
                 </td>
                 <td th:text="${board.writeName}"></td>
-                <td th:text="${#temporals.format( board.writeDate, 'yyyy-MM-dd HH:mm:ss' )}"></td>
-                <td th:text="${#temporals.format( board.modifyDate, 'yyyy-MM-dd HH:mm:ss' )}"></td>
+                <td th:text="2023-07-12"></td>
+                <td th:text="2023-07-12"></td>
+<!--                <td th:text="${#temporals.format( board.writeDate, 'yyyy-MM-dd HH:mm:ss' )}"></td>-->
+<!--                <td th:text="${#temporals.format( board.modifyDate, 'yyyy-MM-dd HH:mm:ss' )}"></td>-->
             </tr>
             
             <tr th:unless="${not #lists.isEmpty( boardList )}">
